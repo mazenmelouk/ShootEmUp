@@ -5,15 +5,15 @@ function animateFireballs() {
         if (getTopLeft(fireballs[i].sprite).y < $("canvas").height()) {
             if (fireballs[i].animIndex >= 0 && fireballs[i].animIndex <= 14) {
                 fireballs[i].animIndex += (0.4) * Level[currentLevel].fireballSpeed;
-                fireballs[i].sprite.setTexture(PIXI.Texture.fromFrame(cacheIndices.fireball.start + Math.floor(fireballs[i].animIndex)));
+                fireballs[i].sprite.texture =(PIXI.Texture.fromFrame(cacheIndices.fireball.start + Math.floor(fireballs[i].animIndex)));
             }
             else if (fireballs[i].animIndex <= 196) {
                 fireballs[i].animIndex += 2 * Level[currentLevel].fireballSpeed;
-                fireballs[i].sprite.setTexture(PIXI.Texture.fromFrame(cacheIndices.fireball.start + Math.floor(fireballs[i].animIndex)));
+                fireballs[i].sprite.texture =(PIXI.Texture.fromFrame(cacheIndices.fireball.start + Math.floor(fireballs[i].animIndex)));
             }
             else if (fireballs[i].animIndex < (cacheIndices.fireball.length - 1)) {
                 fireballs[i].animIndex += 0.25 * Level[currentLevel].fireballSpeed;
-                fireballs[i].sprite.setTexture(PIXI.Texture.fromFrame(cacheIndices.fireball.start + Math.floor(fireballs[i].animIndex)));
+                fireballs[i].sprite.texture =(PIXI.Texture.fromFrame(cacheIndices.fireball.start + Math.floor(fireballs[i].animIndex)));
             }
             else {
                 stage.removeChild(fireballs[i].sprite);
@@ -46,7 +46,7 @@ function animateEnemyBlasts() {
             enemyBlasts.splice(i, 1);
             continue;
         }
-        enemyBlasts[i].sprite.setTexture(
+        enemyBlasts[i].sprite.texture =(
                 new PIXI.Texture.fromFrame(
                 Math.floor(enemyBlasts[i].animIndex += 0.5) + cacheIndices.explosion1.start
                 ));
@@ -206,7 +206,7 @@ function animateGameStart() {
     Texts.start.alpha -= 0.06;
     Sprites.startButton.alpha -= 0.06;
     if (Sprites.blackOverlay.alpha <= 0.45) {
-        Textures.startButton.setFrame(new PIXI.Rectangle(0, 0, 256, 64));
+        Textures.startButton.frame=(new PIXI.Rectangle(0, 0, 256, 64));
         if (Sprites.blackOverlay.alpha <= 0) {
             startGameAnimation = false;
             beginning = false;
@@ -228,7 +228,7 @@ function animateDestroyAll() {
 }
 
 function animate() {
-    requestAnimFrame(animate);
+    requestAnimationFrame(animate);
     if (!away) {
         animatePauseUnpause();
         animateGameStart();
@@ -248,7 +248,7 @@ function animate() {
                 detectBulletEnemyCollision(bulletsR);
             }
             if (multigunned) {
-                Texts.counterText.setText("Multi-bullets: " + bonuslimit);
+                Texts.counterText.text= new PIXI.Text("Multi-bullets: " + bonuslimit);
             }
 
             animateEnemies();
@@ -257,7 +257,7 @@ function animate() {
             animateFireballs();
             animateDestroyAll();
             detectDestroyAllCollisions();
-            Texts.scoreText.setText("Level " + (currentLevel + 1) + " - Score : " + score);
+            Texts.scoreText.text= new PIXI.Text("Level " + (currentLevel + 1) + " - Score : " + score);
 
             if (giftIsActive) {
                 currentGift.position.y += 3;

@@ -108,7 +108,7 @@ function detectBulletStartButtonCollision() {
             startGameAnimation = true;
             stage.removeChild(bullets[i]);
             bullets.splice(i, 1);
-            Textures.startButton.setFrame(new PIXI.Rectangle(0, 64, 256, 64));
+            Textures.startButton.frame=(new PIXI.Rectangle(0, 64, 256, 64));
             playSound('start');
             return;
         }

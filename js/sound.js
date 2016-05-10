@@ -2,11 +2,11 @@ function muteUnmute() {
     mute = !mute;
     if (mute){
         muteSound();
-        Sprites.sound.setTexture(Textures.soundOff);
+        Sprites.sound.texture =(Textures.soundOff);
     }
     else{
         unmuteSound();
-        Sprites.sound.setTexture(Textures.soundOn);
+        Sprites.sound.texture=(Textures.soundOn);
     }
 }
 

@@ -97,11 +97,11 @@ function unPauseGame() {
 }
 
 function buttonMouseDown() {
-    Textures.resumeButton.setFrame(new PIXI.Rectangle(0, 64, 256, 64));
+    Textures.resumeButton.frame=new PIXI.Rectangle(0, 64, 256, 64);
 }
 
 function buttonMouseUp() {
-    Textures.resumeButton.setFrame(new PIXI.Rectangle(0, 0, 256, 64));
+    Textures.resumeButton.frame=(new PIXI.Rectangle(0, 0, 256, 64));
     cantClick = true;
     unPauseGame();
     $.timer(function() {

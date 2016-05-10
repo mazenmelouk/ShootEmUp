@@ -78,7 +78,7 @@ $(document).ready(function() {
     initSprites();
     initTexts();
 
-    stage = new PIXI.Stage(0xFFFFFF, true);
+    stage = new PIXI.Container(0xFFFFFF, true);
     renderer = PIXI.autoDetectRenderer($(window).width(), $(window).height());
     $("body").append(renderer.view);
 
@@ -93,7 +93,7 @@ $(document).ready(function() {
     $(document).keypress(keyPressFunction);
     initStartScreen();
 
-    requestAnimFrame(animate);
+    requestAnimationFrame(animate);
 
     $(window).load(
             function() {
